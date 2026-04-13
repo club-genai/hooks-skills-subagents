@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="240 60 320 320" width="100%" height="100%">
+  <defs>
+    <pattern id="darkGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#e8e6dc" />
+    </pattern>
+
+    <g id="network-node">
+       <path d="M 400 220 C 450 150, 480 190, 400 240" stroke="#d97757" stroke-width="2.5" fill="none" />
+       <path d="M 400 220 C 350 150, 320 190, 400 240" stroke="#d97757" stroke-width="2.5" fill="none" />
+       <circle cx="400" cy="130" r="3.5" fill="#d97757" />
+       <line x1="400" y1="210" x2="400" y2="150" stroke="#d97757" stroke-width="1.5" opacity="0.6" />
+    </g>
+  </defs>
+
+  <g transform="translate(0, -30)">
+
+    <g fill="#b0aea5">
+      <circle cx="270" cy="160" r="4" />
+      <polygon points="310,110 320,115 315,125" opacity="0.8" />
+      <circle cx="240" cy="220" r="2" opacity="0.5" />
+
+      <circle cx="520" cy="140" r="5" opacity="0.6" />
+      <polygon points="480,100 488,103 483,112" />
+      <circle cx="560" cy="200" r="2.5" />
+
+      <circle cx="250" cy="290" r="3" opacity="0.7" />
+      <polygon points="290,340 295,350 285,345" />
+
+      <circle cx="540" cy="310" r="4" />
+      <circle cx="490" cy="360" r="2" opacity="0.4" />
+      <polygon points="530,260 540,265 535,275" opacity="0.9" />
+    </g>
+
+    <circle cx="400" cy="240" r="95" stroke="#d97757" stroke-width="1" fill="none" opacity="0.3" stroke-dasharray="6 6" />
+    <circle cx="400" cy="240" r="115" stroke="#d97757" stroke-width="1.5" fill="none" opacity="0.15" />
+
+    <use href="#network-node" />
+    <use href="#network-node" transform="rotate(45, 400, 240)" />
+    <use href="#network-node" transform="rotate(90, 400, 240)" />
+    <use href="#network-node" transform="rotate(135, 400, 240)" />
+    <use href="#network-node" transform="rotate(180, 400, 240)" />
+    <use href="#network-node" transform="rotate(225, 400, 240)" />
+    <use href="#network-node" transform="rotate(270, 400, 240)" />
+    <use href="#network-node" transform="rotate(315, 400, 240)" />
+
+    <circle cx="400" cy="240" r="18" fill="#faf9f5" stroke="#d97757" stroke-width="3" />
+    <circle cx="400" cy="240" r="8" fill="#d97757" />
+
+  </g>
+</svg>

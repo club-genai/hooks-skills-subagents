@@ -1,0 +1,224 @@
+/* Custom Theme based on User Palette */
+:root {
+  /* Palette variables */
+  --color-cream: #faf9f5;
+  --color-cream-card: #f0ede6;
+  --color-charcoal: #141413;
+  --color-stone: #b0aea5;
+  --color-sand: #e8e6dc;
+  --color-terracotta: #d97757;
+  --color-terracotta-dark: #b85c3a;
+
+  /* Reveal standard variables overrides */
+  --r-background-color: var(--color-cream);
+  --r-main-font: 'Inter', Helvetica, sans-serif;
+  --r-main-font-size: 38px;
+  --r-main-color: var(--color-charcoal);
+  --r-block-margin: 20px;
+  --r-heading-margin: 0 0 20px 0;
+  --r-heading-font: 'Inter', Helvetica, sans-serif;
+  --r-heading-color: var(--color-charcoal);
+  --r-heading-line-height: 1.2;
+  --r-heading-letter-spacing: normal;
+  --r-heading-text-transform: none;
+  --r-heading-text-shadow: none;
+  --r-heading-font-weight: 800;
+  --r-heading1-size: 2.2em;
+  --r-heading2-size: 1.6em;
+  --r-heading3-size: 1.3em;
+  --r-heading4-size: 1em;
+  --r-code-font: 'Courier New', monospace;
+  --r-link-color: var(--color-terracotta);
+  --r-link-color-hover: var(--color-terracotta-dark);
+  --r-selection-background-color: var(--color-sand);
+  --r-selection-color: var(--color-charcoal);
+}
+
+body, .reveal {
+  color: var(--r-main-color);
+  background-color: var(--r-background-color);
+  font-family: var(--r-main-font);
+}
+
+.reveal .slide-background {
+  background-color: var(--r-background-color);
+}
+
+/* Global Alignment */
+.reveal section {
+  text-align: left;
+}
+
+/* Typography Overrides */
+.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+  color: var(--color-charcoal);
+  font-weight: 800;
+  margin-bottom: 30px;
+}
+
+.reveal h1 { 
+    color: var(--color-terracotta); 
+    text-align: center;
+} 
+
+.reveal h2 { 
+    color: var(--color-terracotta); 
+    border-bottom: 2px solid var(--color-sand);
+    padding-bottom: 10px;
+    display: inline-block;
+} 
+
+.reveal strong {
+  color: var(--color-terracotta);
+}
+
+.reveal p, .reveal li {
+   line-height: 1.5;
+   font-weight: 400;
+}
+
+.text-muted {
+  color: var(--color-stone);
+}
+
+/* Layout Helpers */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: center;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Components */
+.card {
+  background-color: var(--color-cream-card);
+  border: 1px solid var(--color-sand);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 6px rgba(20, 20, 19, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 12px rgba(20, 20, 19, 0.08);
+}
+
+.card h3 {
+    margin-top: 0;
+    color: var(--color-charcoal);
+    font-weight: 700;
+    border: none;
+}
+
+.tag {
+    display: inline-block;
+    color: var(--color-cream);
+    padding: 6px 16px;
+    border-radius: 30px;
+    font-size: 0.5em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    vertical-align: middle;
+}
+
+.tag-theory { background: var(--color-stone); color: var(--color-charcoal); }
+.tag-prac { background: var(--color-terracotta); color: var(--color-cream); }
+
+code {
+    background-color: var(--color-cream-card);
+    color: var(--color-terracotta);
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.85em;
+    font-weight: 600;
+}
+
+.step-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.step-list li {
+    position: relative;
+    padding-left: 50px;
+    margin-bottom: 25px;
+}
+
+.step-list li::before {
+    content: counter(step-counter);
+    counter-increment: step-counter;
+    position: absolute;
+    left: 0;
+    top: -2px;
+    width: 36px;
+    height: 36px;
+    background-color: var(--color-cream-card);
+    color: var(--color-terracotta);
+    border: 2px solid var(--color-terracotta);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.8em;
+}
+
+body {
+    counter-reset: step-counter;
+}
+
+/* Progress and Controls styling override */
+.reveal .progress {
+    color: var(--color-terracotta);
+}
+
+.reveal .controls {
+    color: var(--color-terracotta);
+}
+
+/* Roadmap Visual */
+.roadmap-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.roadmap-item {
+    display: flex;
+    align-items: center;
+    background: var(--color-cream-card);
+    border-radius: 12px;
+    padding: 15px 25px;
+    border-left: 6px solid var(--color-stone);
+    transition: transform 0.2s;
+}
+.roadmap-item:hover {
+    transform: translateX(10px);
+}
+.roadmap-item.active {
+    border-left-color: var(--color-terracotta);
+    background: white;
+    box-shadow: 0 4px 15px rgba(217, 119, 87, 0.15);
+}
+.roadmap-number {
+    font-size: 1.5em;
+    font-weight: 800;
+    color: var(--color-stone);
+    margin-right: 20px;
+    min-width: 40px;
+}
+.roadmap-item.active .roadmap-number {
+    color: var(--color-terracotta);
+}
