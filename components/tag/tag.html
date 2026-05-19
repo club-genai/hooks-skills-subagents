@@ -1,0 +1,28 @@
+<!--
+  TAG — Exemples d'utilisation
+  ═══════════════════════════════════════════════════
+
+  RÈGLE DA :
+  • Jamais <span class="tag"> seul → texte cream invisible sur fond clair
+  • Toujours utiliser un variant : tag--neutral, tag--outline, tag--filled
+  • Pour les états (bloquant, passif) → tag--outline avec --tag-color
+  • Pour théorie/pratique → tag--theory / tag--prac
+
+  ───────────────────────────────────────────────────
+-->
+
+<!-- Neutre (fond sable) -->
+<span class="tag tag--neutral">Non-bloquant</span>
+
+<!-- Outline coloré — état / comportement -->
+<span class="tag tag--outline" style="--tag-color: var(--color-green);">Peut bloquer</span>
+<span class="tag tag--outline" style="--tag-color: var(--color-blue);">Feedback possible</span>
+<span class="tag tag--outline" style="--tag-color: var(--color-amber);">Peut forcer continuer</span>
+
+<!-- Filled — catégorie forte -->
+<span class="tag tag--filled" style="--tag-color: var(--color-terracotta);">Pratique</span>
+<span class="tag tag--filled" style="--tag-color: var(--color-blue);">Théorie</span>
+
+<!-- Alias sémantiques -->
+<span class="tag tag--theory">Théorie</span>
+<span class="tag tag--prac">Pratique</span>

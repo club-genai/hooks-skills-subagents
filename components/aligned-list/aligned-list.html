@@ -1,0 +1,80 @@
+<!--
+  ALIGNED-LIST — Liste tag + [code] + description alignés en colonnes
+  ═══════════════════════════════════════════════════
+
+  Pattern : CSS grid avec colonnes fixes pour aligner visuellement les descriptions.
+  Les largeurs des colonnes sont calibrées selon le contenu (tag, chemin de code, etc.)
+
+  RÈGLE DA :
+  • Utiliser quand on liste plusieurs items avec un badge/tag + un libellé + une description
+  • Jamais flex+gap pour ce pattern — le gap ne crée pas d'alignement inter-lignes
+  • Le grid crée une "grille invisible" : toutes les descriptions s'alignent à la même colonne
+  • Couleur des tags : adapter selon le sens (neutral, outline, filled)
+  • Les items sont des lignes dans un flex-col — pas des cards
+
+  VARIANTE A — Tag seul + description (ex: types de handlers)
+    grid-template-columns: 5em 1fr
+    → col 1 : tag (largeur fixe)
+    → col 2 : description (prend le reste)
+
+  VARIANTE B — Tag + chemin de code + description (ex: niveaux de config)
+    grid-template-columns: 5em 16em 1fr
+    → col 1 : tag (largeur fixe)
+    → col 2 : chemin de fichier (largeur fixe)
+    → col 3 : description (prend le reste)
+
+  ───────────────────────────────────────────────────
+  Variante A : tag + description (2 colonnes)
+  ───────────────────────────────────────────────────
+-->
+<div class="card" style="border-left: 4px solid var(--color-blue);">
+  <strong style="color: var(--color-blue);">Types de handlers</strong>
+  <div class="flex-col" style="margin-top: var(--margin-sm); gap: var(--gap-xs);">
+
+    <div style="display: grid; grid-template-columns: 5em 1fr; align-items: center; gap: var(--gap-sm);">
+      <span class="tag tag--filled" style="--tag-color: var(--color-blue);">exit 0</span>
+      <span style="color: var(--color-charcoal); font-size: var(--font-size-secondary);">Succès — continuer normalement</span>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 5em 1fr; align-items: center; gap: var(--gap-sm);">
+      <span class="tag tag--filled" style="--tag-color: var(--color-terracotta);">exit 1</span>
+      <span style="color: var(--color-charcoal); font-size: var(--font-size-secondary);">Erreur — bloquer l'action (si hook bloquant)</span>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 5em 1fr; align-items: center; gap: var(--gap-sm);">
+      <span class="tag tag--neutral">exit 2</span>
+      <span style="color: var(--color-charcoal); font-size: var(--font-size-secondary);">Forcer continuer malgré le feedback</span>
+    </div>
+
+  </div>
+</div>
+
+<!--
+  ───────────────────────────────────────────────────
+  Variante B : tag + chemin de code + description (3 colonnes)
+  ───────────────────────────────────────────────────
+-->
+<div class="card" style="border-left: 4px solid var(--color-amber); margin-top: var(--margin-md);">
+  <strong style="color: var(--color-amber);">Niveaux de configuration</strong>
+  <div class="flex-col" style="margin-top: var(--margin-sm); gap: var(--gap-xs);">
+
+    <div style="display: grid; grid-template-columns: 5em 16em 1fr; align-items: center; gap: var(--gap-sm);">
+      <span class="tag tag--outline" style="--tag-color: var(--color-amber);">LOCAL</span>
+      <code style="font-size: var(--font-size-secondary);">.claude/settings.local.json</code>
+      <span style="color: var(--color-charcoal); font-size: var(--font-size-secondary);">Overrides locaux, non committés</span>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 5em 16em 1fr; align-items: center; gap: var(--gap-sm);">
+      <span class="tag tag--filled" style="--tag-color: var(--color-blue);">PROJET</span>
+      <code style="font-size: var(--font-size-secondary);">.claude/settings.json</code>
+      <span style="color: var(--color-charcoal); font-size: var(--font-size-secondary);">Partagé avec l'équipe via git</span>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 5em 16em 1fr; align-items: center; gap: var(--gap-sm);">
+      <span class="tag tag--filled" style="--tag-color: var(--color-stone);">USER</span>
+      <code style="font-size: var(--font-size-secondary);">~/.claude/settings.json</code>
+      <span style="color: var(--color-charcoal); font-size: var(--font-size-secondary);">Préférences globales de l'utilisateur</span>
+    </div>
+
+  </div>
+</div>

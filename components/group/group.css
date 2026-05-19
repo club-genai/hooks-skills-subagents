@@ -1,0 +1,34 @@
+/* ═══════════════════════════════════════════════════
+   GROUP — Groupement de cards par catégorie
+   ═══════════════════════════════════════════════════
+
+   Utilisé pour regrouper des cards sous un label coloré
+   (ex: slide "Les événements du cycle de vie")
+
+   Structure HTML :
+   <div class="group">
+     <p class="group__label" style="--group-color: var(--color-green);">Début de session</p>
+     <div class="flex-row"> ... cards ... </div>
+   </div>
+
+   RÈGLE DA :
+   • Le label .group__label prend sa couleur via --group-color
+   • Les cards dans le groupe utilisent border-top de même couleur
+   • Pas de rouge (réservé alertes/danger)
+*/
+
+.group {
+  display:        flex;
+  flex-direction: column;
+  gap:            var(--gap-sm);
+}
+
+.group__label {
+  font-size:      var(--font-size-label);
+  font-weight:    700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color:          var(--group-color, var(--color-stone));
+  margin:         0;
+  padding-left:   0.2em;
+}

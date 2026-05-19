@@ -1,0 +1,66 @@
+/* ═══════════════════════════════════════════════════
+   TAG — Badges / labels
+   ═══════════════════════════════════════════════════
+
+   Variants:
+   .tag                → base (ne pas utiliser seul : texte cream invisible)
+   .tag.tag--neutral   → fond sable, texte charcoal (neutre)
+   .tag.tag--filled    → fond couleur pleine (via --tag-color)
+   .tag.tag--outline   → contour sans fond (via --tag-color)
+   .tag.tag--theory    → alias sémantique (théorie)
+   .tag.tag--prac      → alias sémantique (pratique)
+
+   Usage avec --tag-color :
+   <span class="tag tag--outline" style="--tag-color: var(--color-blue);">label</span>
+   <span class="tag tag--filled"  style="--tag-color: var(--color-green);">label</span>
+*/
+
+.tag {
+  display:       inline-block;
+  padding:       0.30em 0.85em;
+  border-radius: 1.5em;
+  font-weight:   700;
+  font-size:     var(--font-size-label);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  vertical-align: middle;
+  /* pas de couleur par défaut — toujours utiliser un variant */
+}
+
+/* ── Neutre ──────────────────────────────────────── */
+.tag--neutral {
+  background: var(--color-sand);
+  color:      var(--color-charcoal);
+  border:     none;
+}
+
+/* ── Fond coloré plein ───────────────────────────── */
+.tag--filled {
+  background: var(--tag-color, var(--color-stone));
+  color:      var(--color-cream);
+  border:     none;
+}
+
+/* ── Contour sans fond ───────────────────────────── */
+.tag--outline {
+  background: transparent;
+  color:      var(--tag-color, var(--color-stone));
+  border:     1.5px solid var(--tag-color, var(--color-stone));
+}
+
+/* ── Alias sémantiques ───────────────────────────── */
+.tag--theory {
+  background: var(--color-stone);
+  color:      var(--color-charcoal);
+  border:     none;
+}
+
+.tag--prac {
+  background: var(--color-terracotta);
+  color:      var(--color-cream);
+  border:     none;
+}
+
+/* Rétrocompatibilité (anciens noms) */
+.tag-theory { background: var(--color-stone);      color: var(--color-charcoal); }
+.tag-prac   { background: var(--color-terracotta); color: var(--color-cream);    }

@@ -1,0 +1,49 @@
+/* ═══════════════════════════════════════════════════
+   CODE-BLOCK — Blocs de code terminal / snippets
+   ═══════════════════════════════════════════════════
+
+   .code-block     → fond sombre, texte clair (terminal)
+   code (inline)   → fond cream-card, texte terracotta
+
+   RÈGLE DA :
+   • <pre class="code-block"> pour les commandes à copier-coller
+   • <code> inline uniquement pour les références dans du texte
+   • Ne jamais mettre plusieurs commandes indépendantes dans un même <pre>
+   • font-size minimum : 0.80em
+*/
+
+/* ── Bloc terminal (fond sombre) ─────────────────── */
+pre, .code-block {
+  font-family:   var(--font-code);
+  font-size:     var(--font-size-code);
+  background:    var(--color-charcoal);
+  color:         var(--color-cream);
+  padding:       var(--padding-md);
+  border-radius: 0.5em;
+  line-height:   1.75;
+  white-space:   pre-wrap;
+  word-wrap:     break-word;
+  overflow-x:    hidden;
+  margin:        0;
+}
+
+/* ── Code inline ─────────────────────────────────── */
+code {
+  background-color: var(--color-cream-card);
+  color:            var(--color-terracotta);
+  padding:          0.2em 0.45em;
+  border-radius:    0.3em;
+  font-size:        var(--font-size-body);
+  font-weight:      600;
+  font-family:      var(--font-code);
+}
+
+/* Code inline à l'intérieur d'un pre : reset */
+pre code, .code-block code {
+  background:   transparent;
+  color:        inherit;
+  padding:      0;
+  border-radius: 0;
+  font-size:    inherit;
+  font-weight:  400;
+}

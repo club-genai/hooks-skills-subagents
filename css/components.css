@@ -1,0 +1,11 @@
+/* ═══════════════════════════════════════════════════
+   COMPONENTS — Point d'entrée de tous les composants
+   Chargé après global.css dans index.html
+   ═══════════════════════════════════════════════════ */
+
+@import url('../components/card/card.css');
+@import url('../components/tag/tag.css');
+@import url('../components/grid/grid.css');
+@import url('../components/group/group.css');
+@import url('../components/code-block/code-block.css');
+@import url('../components/roadmap/roadmap.css');

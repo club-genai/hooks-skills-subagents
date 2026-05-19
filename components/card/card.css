@@ -1,0 +1,80 @@
+/* ═══════════════════════════════════════════════════
+   CARD — Composant conteneur de contenu
+   ═══════════════════════════════════════════════════
+
+   Variants:
+   .card              → card standard
+   .card.card--compact → padding réduit (contenu dense)
+   .card.card--flush   → sans padding (image ou pre plein-bord)
+
+   Border accent (à appliquer via style inline ou classe utilitaire):
+   DA règle : border-left  = listing vertical/séquentiel
+              border-top   = listing horizontal (outils, capacités)
+*/
+
+.card {
+  background-color: var(--color-cream-card);
+  border:           1px solid var(--color-sand);
+  border-radius:    0.75em;
+  padding:          var(--padding-md);
+  box-shadow:       0 0.2em 0.4em rgba(20, 20, 19, 0.05);
+  transition:       transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform:  translateY(-0.1em);
+  box-shadow: 0 0.45em 0.7em rgba(20, 20, 19, 0.08);
+}
+
+/* Titres dans les cards (h3, strong) */
+.card h3 {
+  margin-top:  0;
+  color:       var(--color-charcoal);
+  font-weight: 700;
+  border:      none;
+  font-size:   var(--font-size-card-title);
+  margin-bottom: var(--margin-sm);
+}
+
+/* Override : .reveal strong dans une card est charcoal par défaut,
+   sauf si la card a un border coloré → appliquer color inline sur le strong */
+.card strong {
+  font-weight: 700;
+}
+
+/* Texte courant dans les cards */
+.card p, .card li {
+  color:     var(--color-charcoal);
+  font-size: var(--font-size-body);
+}
+
+/* ── Variant compacte ────────────────────────────── */
+.card--compact {
+  padding: var(--padding-sm);
+}
+
+.card--compact p, .card--compact li {
+  font-size: var(--font-size-secondary);
+}
+
+/* ── Variant accroche (intro, analogie) ──────────── */
+/* Toujours border-left terracotta, utilisée en tête de slide */
+.card--intro {
+  border-left: 4px solid var(--color-terracotta);
+  margin-bottom: var(--margin-xxxl);
+}
+
+/* ── Variant avec icône latérale ─────────────────── */
+/* Structure : <div class="card card--icon-row"> <div class="card__icon">...</div> <div>...</div> </div> */
+.card--icon-row {
+  display:     flex;
+  gap:         var(--gap-xl);
+  align-items: flex-start;
+}
+
+.card__icon {
+  font-size: var(--font-size-icon-md);
+  min-width: 2.2em;
+  text-align: center;
+  flex-shrink: 0;
+}

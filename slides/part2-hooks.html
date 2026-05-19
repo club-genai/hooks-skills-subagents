@@ -1,0 +1,282 @@
+<!-- PARTIE 2 : Hooks -->
+<section>
+
+    <!-- Slide titre de la partie -->
+    <section class="center" style="text-align: center;">
+        <h1>🪝<br>Partie 1 : Hooks</h1>
+        <p class="text-muted" style="font-weight: 600; letter-spacing: 2px;">35 MINUTES</p>
+    </section>
+
+    <!-- Slide : Qu'est-ce qu'un hook ? -->
+    <section>
+        <h2>Qu'est-ce qu'un hook ?</h2>
+        <div class="card" style="margin-bottom: var(--margin-xxxl); border-left: 4px solid var(--color-terracotta);">
+            <p>
+                Les hooks sont des <strong>commandes shell</strong> qui s'exécutent à des points précis du cycle de vie de Claude Code — <strong>toujours</strong>, quoi que décide le modèle.
+            </p>
+        </div>
+        <div class="grid-2" style="align-items: start;">
+            <div class="card" style="border-left: 4px solid var(--color-amber);">
+                <strong style="color: var(--color-amber);">Prompt / Instructions</strong>
+                <p style="color: var(--color-charcoal); margin-top: var(--margin-md);">Claude <strong style="color: var(--color-amber);">PEUT décider</strong> de le faire… ou non.</p>
+            </div>
+            <div class="card" style="border-left: 4px solid var(--color-green);">
+                <strong style="color: var(--color-green);">Hook</strong>
+                <p style="color: var(--color-charcoal); margin-top: var(--margin-md);">Claude <strong style="color: var(--color-green);">VA le faire</strong>, systématiquement.</p>
+            </div>
+        </div>
+        <div class="card" style="margin-top: var(--margin-xxxl); border-left: 4px solid var(--color-blue);">
+            <p style="color: var(--color-charcoal);">
+                💡 <strong style="color: var(--color-blue);">Analogie :</strong> pensez aux hooks Git (<code>pre-commit</code>, <code>post-push</code>) — sauf qu'ici, c'est pour votre agent IA.
+            </p>
+        </div>
+    </section>
+
+    <!-- Slide : Les événements du cycle de vie -->
+    <section>
+        <h2>Les événements du cycle de vie</h2>
+        <div class="flex-col" style="gap: var(--gap-md);">
+
+            <!-- Ligne 1 : Début de session -->
+            <div style="display: flex; align-items: center; gap: var(--gap-md);">
+                <div style="width: 9em; flex-shrink: 0; display: flex; align-items: center; justify-content: flex-end; border-right: 2px solid var(--color-green); padding-right: var(--padding-sm);">
+                    <p style="font-size: var(--font-size-label); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-green); margin: 0; text-align: right;">Début de session</p>
+                </div>
+                <div style="display: flex; gap: var(--gap-md); flex: 1; align-items: stretch;">
+                    <div class="card card--compact" style="flex: 1; border-top: 4px solid var(--color-green); text-align: center;">
+                        <p style="font-weight: 700; color: var(--color-charcoal);">SessionStart</p>
+                        <p style="color: var(--color-charcoal); margin-top: var(--margin-xs);">Démarrage / reprise de session</p>
+                        <span class="tag tag--outline" style="--tag-color: var(--color-green); margin-top: var(--margin-xs);">non-bloquant</span>
+                    </div>
+                    <div class="card card--compact" style="flex: 1; border-top: 4px solid var(--color-green); text-align: center;">
+                        <p style="font-weight: 700; color: var(--color-charcoal);">UserPromptSubmit</p>
+                        <p style="color: var(--color-charcoal); margin-top: var(--margin-xs);">Avant que le prompt atteigne Claude</p>
+                        <span class="tag tag--outline" style="--tag-color: var(--color-green); margin-top: var(--margin-xs);">peut bloquer</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Séparateur -->
+            <div style="height: 1px; background: var(--color-sand);"></div>
+
+            <!-- Ligne 2 : Exécution d'outils -->
+            <div style="display: flex; align-items: center; gap: var(--gap-md);">
+                <div style="width: 9em; flex-shrink: 0; display: flex; align-items: center; justify-content: flex-end; border-right: 2px solid var(--color-blue); padding-right: var(--padding-sm);">
+                    <p style="font-size: var(--font-size-label); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-blue); margin: 0; text-align: right;">Exécution d'outils</p>
+                </div>
+                <div style="display: flex; gap: var(--gap-md); flex: 1; align-items: stretch;">
+                    <div class="card card--compact" style="flex: 1; border-top: 4px solid var(--color-blue); text-align: center;">
+                        <p style="font-weight: 700; color: var(--color-charcoal);">PreToolUse</p>
+                        <p style="color: var(--color-charcoal); margin-top: var(--margin-xs);">Avant l'exécution d'un outil (Bash, Write…)</p>
+                        <span class="tag tag--outline" style="--tag-color: var(--color-blue); margin-top: var(--margin-xs);">peut bloquer</span>
+                    </div>
+                    <div class="card card--compact" style="flex: 1; border-top: 4px solid var(--color-blue); text-align: center;">
+                        <p style="font-weight: 700; color: var(--color-charcoal);">PostToolUse</p>
+                        <p style="color: var(--color-charcoal); margin-top: var(--margin-xs);">Après l'exécution d'un outil</p>
+                        <span class="tag tag--outline" style="--tag-color: var(--color-blue); margin-top: var(--margin-xs);">feedback possible</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Séparateur -->
+            <div style="height: 1px; background: var(--color-sand);"></div>
+
+            <!-- Ligne 3 : Fin de session -->
+            <div style="display: flex; align-items: center; gap: var(--gap-md);">
+                <div style="width: 9em; flex-shrink: 0; display: flex; align-items: center; justify-content: flex-end; border-right: 2px solid var(--color-amber); padding-right: var(--padding-sm);">
+                    <p style="font-size: var(--font-size-label); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-amber); margin: 0; text-align: right;">Fin de session</p>
+                </div>
+                <div style="display: flex; gap: var(--gap-md); flex: 1; align-items: stretch;">
+                    <div class="card card--compact" style="flex: 1; border-top: 4px solid var(--color-amber); text-align: center;">
+                        <p style="font-weight: 700; color: var(--color-charcoal);">Stop</p>
+                        <p style="color: var(--color-charcoal); margin-top: var(--margin-xs);">Quand Claude a fini de répondre</p>
+                        <span class="tag tag--outline" style="--tag-color: var(--color-amber); margin-top: var(--margin-xs);">peut forcer continuer</span>
+                    </div>
+                    <div class="card card--compact" style="flex: 1; border-top: 4px solid var(--color-amber); text-align: center;">
+                        <p style="font-weight: 700; color: var(--color-charcoal);">SubagentStop / PreCompact</p>
+                        <p style="color: var(--color-charcoal); margin-top: var(--margin-xs);">Fin d'un subagent / avant compaction</p>
+                        <span class="tag tag--outline" style="--tag-color: var(--color-amber); margin-top: var(--margin-xs);">selon l'événement</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Slide : Types de handlers & exit codes -->
+    <section>
+        <h2>Handlers & exit codes</h2>
+        <div class="grid-2" style="align-items: start;">
+            <div class="flex-col" style="gap: var(--gap-lg);">
+                <div class="card" style="border-left: 4px solid var(--color-terracotta);">
+                    <strong style="color: var(--color-terracotta);">Les 4 types de handlers</strong>
+                    <div style="display: grid; grid-template-columns: 5em 1fr; gap: var(--gap-sm) var(--gap-md); align-items: center; margin-top: var(--margin-lg);">
+                        <span class="tag tag--neutral" style="justify-self: start;">command</span>
+                        <p style="color: var(--color-charcoal);">Script shell — ~90% des cas, &lt;5ms</p>
+                        <span class="tag tag--neutral" style="justify-self: start;">http</span>
+                        <p style="color: var(--color-charcoal);">Requête HTTP POST vers un endpoint</p>
+                        <span class="tag tag--neutral" style="justify-self: start;">prompt</span>
+                        <p style="color: var(--color-charcoal);">Évaluation par Claude Haiku</p>
+                        <span class="tag tag--neutral" style="justify-self: start;">agent</span>
+                        <p style="color: var(--color-charcoal);">Spawn d'un subagent avec outils — 30-60s</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" style="border-left: 4px solid var(--color-blue);">
+                <strong style="color: var(--color-blue);">Le mécanisme d'exit code</strong>
+                <pre style="background: var(--color-charcoal); color: var(--color-cream); padding: var(--padding-lg); border-radius: 8px; margin-top: var(--margin-lg); line-height: 2;">exit 0  # ✅ Autoriser, continuer
+exit 1  # ⚠️  Erreur → feedback pour Claude
+exit 2  # 🚫 BLOQUER l'action</pre>
+                <p style="color: var(--color-charcoal); margin-top: var(--margin-lg);">Tout ce que vous écrivez sur <code>stderr</code> est transmis à Claude comme feedback.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide : Structure de configuration -->
+    <section>
+        <h2>Structure de configuration</h2>
+        <div class="card" style="margin-bottom: var(--margin-xxl); border-left: 4px solid var(--color-terracotta);">
+            <p style="color: var(--color-charcoal);">Les hooks vivent dans les fichiers de settings JSON, à plusieurs niveaux :</p>
+        </div>
+        <div class="flex-col" style="gap: var(--gap-lg);">
+            <div class="card" style="border-left: 4px solid var(--color-blue);">
+                <strong style="color: var(--color-blue);">Niveaux de configuration</strong>
+                <div style="display: grid; grid-template-columns: 5em 16em 1fr; gap: var(--gap-xs) var(--gap-md); align-items: center; margin-top: var(--margin-md);">
+                    <span class="tag tag--outline" style="--tag-color: var(--color-blue); justify-self: start;">USER</span>
+                    <code style="font-size: var(--font-size-secondary);">~/.claude/settings.json</code>
+                    <span style="color: var(--color-charcoal); font-size: var(--font-size-secondary);">tous les projets</span>
+
+                    <span class="tag tag--outline" style="--tag-color: var(--color-green); justify-self: start;">PROJET</span>
+                    <code style="font-size: var(--font-size-secondary);">.claude/settings.json</code>
+                    <span style="color: var(--color-charcoal); font-size: var(--font-size-secondary);">versionnable en git</span>
+
+                    <span class="tag tag--outline" style="--tag-color: var(--color-amber); justify-self: start;">LOCAL</span>
+                    <code style="font-size: var(--font-size-secondary);">.claude/settings.local.json</code>
+                    <span style="color: var(--color-charcoal); font-size: var(--font-size-secondary);">non commité</span>
+                </div>
+            </div>
+            <div class="card" style="border-left: 4px solid var(--color-green);">
+                <strong style="color: var(--color-green);">Structure de base</strong>
+                <pre style="background: var(--color-charcoal); color: var(--color-cream); padding: var(--padding-md); border-radius: 8px; margin-top: var(--margin-md); line-height: 1.7;">{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [{ "type": "command", "command": "..." }]
+      }
+    ]
+  }
+}</pre>
+                <p style="color: var(--color-charcoal); margin-top: var(--margin-md);">Le champ <code>matcher</code> est une <strong style="color: var(--color-green);">expression régulière</strong> sur le nom de l'outil.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide : TP — Exercice 1 : formatage automatique -->
+    <section>
+        <h2>🛠 TP 1 — Formatage automatique (5 min)</h2>
+        <div class="card card--intro">
+            <p style="color: var(--color-charcoal);">💡 <strong style="color: var(--color-terracotta);">Prérequis :</strong> macOS / Linux natif — Windows avec <strong>Git Bash</strong>. Les scripts <code>.sh</code> s'exécutent dans le même shell.</p>
+        </div>
+        <div class="card" style="border-left: 4px solid var(--color-blue);">
+            <strong style="color: var(--color-blue);">Créez <code>.claude/settings.json</code> à la racine du projet</strong>
+            <pre style="background: var(--color-charcoal); color: var(--color-cream); padding: var(--padding-sm); border-radius: 8px; margin-top: var(--margin-md); line-height: 1.7; font-size: 0.78em; white-space: pre-wrap; word-wrap: break-word; overflow-x: hidden;">{
+  "hooks": {
+    "PostToolUse": [{
+      "matcher": "Edit|Write",
+      "hooks": [{
+        "type": "command",
+        "command": "FILE=$(echo \"$CLAUDE_TOOL_INPUT\" | python3 -c \"import sys,json; d=json.load(sys.stdin); print(d.get('file_path') or d.get('path',''))\"); case \"$FILE\" in *.js|*.ts|*.jsx|*.tsx) npx --yes prettier --write \"$FILE\" 2>/dev/null;; esac"
+      }]
+    }]
+  }
+}</pre>
+            <p style="color: var(--color-charcoal); margin-top: var(--margin-md); font-size: var(--font-size-secondary);">Test : demandez à Claude de créer un fichier <code>test.js</code> mal formaté — il doit être nettoyé automatiquement.</p>
+        </div>
+    </section>
+
+    <!-- Slide : TP — Exercice 2 : sécurité -->
+    <section>
+        <h2>🛠 TP 2 — Hook de sécurité (7 min)</h2>
+        <div class="card card--intro">
+            <p style="color: var(--color-charcoal);">💡 <strong style="color: var(--color-terracotta);">Prérequis :</strong> macOS / Linux natif — Windows avec <strong>Git Bash</strong>. Python3 requis (installé par défaut sur macOS/Linux).</p>
+        </div>
+        <div style="display: flex; gap: var(--gap-md); align-items: start;">
+            <div class="card" style="flex: 1; min-width: 0; border-left: 4px solid var(--color-blue);">
+                <strong style="color: var(--color-blue);">~/.claude/hooks/security-check.sh</strong>
+                <pre style="background: var(--color-charcoal); color: var(--color-cream); padding: var(--padding-sm); border-radius: 8px; margin-top: var(--margin-md); line-height: 1.6; font-size: 0.72em; white-space: pre-wrap; word-wrap: break-word; overflow-x: hidden;">#!/bin/bash
+INPUT=$(cat)
+CMD=$(echo "$INPUT" | python3 -c \
+  "import sys,json; d=json.load(sys.stdin); \
+   print(d.get('tool_input',{}).get('command',''))")
+[ -z "$CMD" ] && exit 0
+
+for p in "rm -rf /" "DROP TABLE" "chmod 777"; do
+  if echo "$CMD" | grep -qi "$p"; then
+    echo "🚫 Bloqué : '$p'" >&2; exit 2
+  fi
+done
+exit 0</pre>
+                <pre style="background: var(--color-charcoal); color: var(--color-cream); padding: var(--padding-sm); border-radius: 8px; margin-top: var(--margin-sm); font-size: 0.72em;">chmod +x ~/.claude/hooks/security-check.sh</pre>
+            </div>
+            <div class="card" style="flex: 1; min-width: 0; border-left: 4px solid var(--color-amber);">
+                <strong style="color: var(--color-amber);">~/.claude/settings.json</strong>
+                <pre style="background: var(--color-charcoal); color: var(--color-cream); padding: var(--padding-sm); border-radius: 8px; margin-top: var(--margin-md); line-height: 1.6; font-size: 0.72em; white-space: pre-wrap; word-wrap: break-word; overflow-x: hidden;">{
+  "hooks": {
+    "PreToolUse": [{
+      "matcher": "Bash",
+      "hooks": [{
+        "type": "command",
+        "command": "~/.claude/hooks/security-check.sh"
+      }]
+    }]
+  }
+}</pre>
+                <p style="color: var(--color-charcoal); margin-top: var(--margin-md); font-size: var(--font-size-secondary);">Test : demandez à Claude d'exécuter <code>rm -rf /tmp/../</code></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide : TP — Exercice 3 & 4 -->
+    <section>
+        <h2>🛠 TP 3 & 4 — Notification & Contexte (8 min)</h2>
+        <div class="card card--intro" style="margin-bottom: var(--margin-md);">
+            <p style="color: var(--color-charcoal);">💡 <strong style="color: var(--color-terracotta);">Prérequis :</strong> macOS / Linux natif — Windows avec <strong>Git Bash</strong>. Windows nécessite aussi le module PowerShell <code>BurntToast</code> pour les notifications (<code>Install-Module BurntToast</code>).</p>
+        </div>
+        <div style="display: flex; gap: var(--gap-md); align-items: start;">
+            <div class="card" style="flex: 1; min-width: 0; border-left: 4px solid var(--color-green);">
+                <strong style="color: var(--color-green);">Notification native (cross-platform)</strong>
+                <p style="color: var(--color-charcoal); margin-top: var(--margin-sm);">Fonctionne même sans terminal ouvert :</p>
+                <pre style="background: var(--color-charcoal); color: var(--color-cream); padding: var(--padding-sm); border-radius: 8px; margin-top: var(--margin-md); line-height: 1.6; font-size: 0.72em; white-space: pre-wrap; word-wrap: break-word; overflow-x: hidden;">#!/bin/bash
+MSG="Claude a terminé !"
+case "$(uname)" in
+  Darwin) osascript -e "display notification \"$MSG\" with title \"Claude Code\"" ;;
+  Linux)  notify-send "Claude Code" "$MSG" ;;
+  *)      powershell.exe -Command "New-BurntToastNotification -Text 'Claude Code','$MSG'" ;;
+esac</pre>
+                <p style="color: var(--color-charcoal); margin-top: var(--margin-sm); font-size: var(--font-size-secondary);">Sauvegarder dans <code>~/.claude/hooks/notify.sh</code> puis <code>chmod +x</code></p>
+            </div>
+            <div class="card" style="flex: 1; min-width: 0; border-left: 4px solid var(--color-blue);">
+                <strong style="color: var(--color-blue);">Injection de contexte au démarrage</strong>
+                <p style="color: var(--color-stone); font-size: var(--font-size-secondary); margin-top: var(--margin-xs);">① <code>~/.claude/hooks/context.sh</code></p>
+                <pre style="background: var(--color-charcoal); color: var(--color-cream); padding: var(--padding-sm); border-radius: 8px; margin-top: var(--margin-xs); line-height: 1.5; font-size: 0.65em; white-space: pre-wrap; word-wrap: break-word; overflow-x: hidden;">#!/bin/bash
+echo "Dossier : $(pwd)"
+case "$(uname)" in
+  Darwin|Linux) echo "Date : $(date '+%Y-%m-%d %H:%M')"; ls ;;
+  *) powershell.exe -Command "Get-Date; Get-ChildItem | Select Name" ;;
+esac</pre>
+                <p style="color: var(--color-stone); font-size: var(--font-size-secondary); margin-top: var(--margin-sm);">② <code>~/.claude/settings.json</code> — puis <code>chmod +x context.sh</code></p>
+                <pre style="background: var(--color-charcoal); color: var(--color-cream); padding: var(--padding-sm); border-radius: 8px; margin-top: var(--margin-xs); line-height: 1.5; font-size: 0.65em; white-space: pre-wrap; word-wrap: break-word; overflow-x: hidden;">{
+  "hooks": {
+    "SessionStart": [{
+      "matcher": "",
+      "hooks": [{ "type": "command", "command": "~/.claude/hooks/context.sh" }]
+    }]
+  }
+}</pre>
+                <span class="tag" style="background: var(--color-sand); color: var(--color-charcoal); margin-top: var(--margin-sm); display: inline-block;">💡 /hooks pour inspecter</span>
+            </div>
+        </div>
+    </section>
+
+</section>

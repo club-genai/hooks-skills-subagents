@@ -1,0 +1,51 @@
+/* ═══════════════════════════════════════════════════
+   ROADMAP — Frise verticale décalée (slide menu)
+   ═══════════════════════════════════════════════════
+
+   .roadmap-container → conteneur vertical centré
+   .roadmap-item      → item inactif (border stone)
+   .roadmap-item.active → item actif (border terracotta)
+   .roadmap-number    → numéro de l'item
+*/
+
+.roadmap-container {
+  display:        flex;
+  flex-direction: column;
+  gap:            var(--gap-md);
+  width:          100%;
+  max-width:      44em;
+  margin:         0 auto;
+}
+
+.roadmap-item {
+  display:         flex;
+  align-items:     center;
+  background:      var(--color-cream-card);
+  border-radius:   0.65em;
+  padding:         0.75em 1.4em;
+  border-left:     6px solid var(--color-stone);
+  transition:      transform 0.2s;
+  font-size:       var(--font-size-body);
+}
+
+.roadmap-item:hover {
+  transform: translateX(0.5em);
+}
+
+.roadmap-item.active {
+  border-left-color: var(--color-terracotta);
+  background:        white;
+  box-shadow:        0 0.22em 0.83em rgba(217, 119, 87, 0.15);
+}
+
+.roadmap-number {
+  font-size:   1.4em;
+  font-weight: 800;
+  color:       var(--color-stone);
+  margin-right: 1.1em;
+  min-width:   2.2em;
+}
+
+.roadmap-item.active .roadmap-number {
+  color: var(--color-terracotta);
+}

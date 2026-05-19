@@ -1,0 +1,223 @@
+<!-- PARTIE 5 : Rappel MCP & Conclusion -->
+<section>
+
+    <!-- Slide titre de la partie -->
+    <section class="center" style="text-align: center;">
+        <h1>🔌<br>Partie 4 : MCP & Conclusion</h1>
+        <p class="text-muted" style="font-weight: 600; letter-spacing: 2px;">15 MINUTES</p>
+    </section>
+
+    <!-- Slide : Rappel MCP -->
+    <section>
+        <h2>Rappel : MCP en 2 minutes</h2>
+        <div class="card" style="margin-bottom: var(--margin-xxl); border-left: 4px solid var(--color-terracotta);">
+            <p>
+                <strong>MCP (Model Context Protocol)</strong> est un standard ouvert qui permet à Claude Code de se connecter à des outils et sources de données externes via un protocole unifié.
+            </p>
+        </div>
+        <div class="grid-2" style="align-items: start;">
+            <div class="card" style="border-left: 4px solid var(--color-blue);">
+                <strong style="color: var(--color-blue);">Les 3 modes de transport</strong>
+                <div class="flex-col" style="gap: var(--gap-sm); margin-top: var(--margin-lg);">
+                    <div style="display: flex; gap: var(--gap-md); align-items: center;">
+                        <span class="tag" style="background: transparent; color: var(--color-green); border: 1.5px solid var(--color-green);">stdio</span>
+                        <p style="color: var(--color-charcoal);">~5ms — Serveurs locaux (90% des cas)</p>
+                    </div>
+                    <div style="display: flex; gap: var(--gap-md); align-items: center;">
+                        <span class="tag" style="background: transparent; color: var(--color-blue); border: 1.5px solid var(--color-blue);">SSE</span>
+                        <p style="color: var(--color-charcoal);">~45ms — Serveurs distants / équipe</p>
+                    </div>
+                    <div style="display: flex; gap: var(--gap-md); align-items: center;">
+                        <span class="tag" style="background: transparent; color: var(--color-amber); border: 1.5px solid var(--color-amber);">HTTP streamable</span>
+                        <p style="color: var(--color-charcoal);">Nouveau standard (remplace SSE)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card" style="border-left: 4px solid var(--color-green);">
+                <strong style="color: var(--color-green);">Commandes essentielles</strong>
+                <pre style="background: var(--color-charcoal); color: var(--color-cream); padding: var(--padding-md); border-radius: 8px; margin-top: var(--margin-lg); line-height: 1.8;">claude mcp add github -- npx -y @modelcontextprotocol/server-github
+
+claude mcp list
+
+/mcp</pre>
+                <p style="color: var(--color-charcoal); margin-top: var(--margin-lg);">Pour tout le détail : consultez le repo du workshop MCP précédent.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide : MCP — Ce que ça permet -->
+    <section>
+        <h2>Ce que MCP permet concrètement</h2>
+        <div class="card" style="margin-bottom: var(--margin-xxl); border-left: 4px solid var(--color-terracotta);">
+            <p style="color: var(--color-charcoal);">💡 <strong>Analogie :</strong> MCP est le "USB-C" de l'IA — un seul standard pour brancher n'importe quel outil.</p>
+        </div>
+        <div class="flex-col" style="gap: var(--gap-lg);">
+            <div class="card" style="border-left: 4px solid var(--color-blue); display: flex; gap: var(--gap-xl); align-items: flex-start;">
+                <div style="font-size: var(--font-size-icon-md); min-width: 40px; text-align: center;">🐙</div>
+                <div style="flex: 1; min-width: 0;">
+                    <strong style="color: var(--color-blue);">GitHub + Jira</strong>
+                    <pre style="background: var(--color-charcoal); color: var(--color-cream); padding: var(--padding-sm); border-radius: 8px; margin-top: var(--margin-sm); line-height: 1.7;">Implémente la feature décrite dans le ticket JIRA ENG-4521 et ouvre une PR GitHub</pre>
+                </div>
+            </div>
+            <div class="card" style="border-left: 4px solid var(--color-green); display: flex; gap: var(--gap-xl); align-items: flex-start;">
+                <div style="font-size: var(--font-size-icon-md); min-width: 40px; text-align: center;">📊</div>
+                <div style="flex: 1; min-width: 0;">
+                    <strong style="color: var(--color-green);">Sentry + monitoring</strong>
+                    <pre style="background: var(--color-charcoal); color: var(--color-cream); padding: var(--padding-sm); border-radius: 8px; margin-top: var(--margin-sm); line-height: 1.7;">Analyse les erreurs Sentry de la semaine et résume les problèmes critiques</pre>
+                </div>
+            </div>
+            <div class="card" style="border-left: 4px solid var(--color-amber); display: flex; gap: var(--gap-xl); align-items: flex-start;">
+                <div style="font-size: var(--font-size-icon-md); min-width: 40px; text-align: center;">🗄️</div>
+                <div style="flex: 1; min-width: 0;">
+                    <strong style="color: var(--color-amber);">PostgreSQL</strong>
+                    <pre style="background: var(--color-charcoal); color: var(--color-cream); padding: var(--padding-sm); border-radius: 8px; margin-top: var(--margin-sm); line-height: 1.7;">Trouve dans notre base les 10 users les plus actifs ce mois</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide : Récapitulatif général -->
+    <section>
+        <h2>Ce qu'on a couvert aujourd'hui</h2>
+        <div class="grid-2" style="align-items: stretch;">
+            <div class="flex-col" style="gap: var(--gap-lg);">
+                <div class="card" style="flex: 1; border-left: 4px solid var(--color-terracotta);">
+                    <strong style="color: var(--color-terracotta);">🪝 Hooks</strong>
+                    <p style="color: var(--color-charcoal); margin-top: var(--margin-sm);">Automatisation déterministe, règles non-négociables, <strong style="color: var(--color-terracotta);">gouvernance</strong> et sécurité</p>
+                </div>
+                <div class="card" style="flex: 1; border-left: 4px solid var(--color-blue);">
+                    <strong style="color: var(--color-blue);">🧩 Skills</strong>
+                    <p style="color: var(--color-charcoal); margin-top: var(--margin-sm);">Expertise <strong style="color: var(--color-blue);">packagée et réutilisable</strong>, cohérence d'équipe, progressive disclosure</p>
+                </div>
+            </div>
+            <div class="flex-col" style="gap: var(--gap-lg);">
+                <div class="card" style="flex: 1; border-left: 4px solid var(--color-green);">
+                    <strong style="color: var(--color-green);">🤖 Subagents</strong>
+                    <p style="color: var(--color-charcoal); margin-top: var(--margin-sm);">Isolation du contexte, <strong style="color: var(--color-green);">parallélisation</strong>, spécialisation par modèle</p>
+                </div>
+                <div class="card" style="flex: 1; border-left: 4px solid var(--color-amber);">
+                    <strong style="color: var(--color-amber);">🔌 MCP</strong>
+                    <p style="color: var(--color-charcoal); margin-top: var(--margin-sm);">Connexion à tout votre <strong style="color: var(--color-amber);">écosystème d'outils</strong> via un standard unifié</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide : La combinaison gagnante -->
+    <section>
+        <h2>La combinaison gagnante</h2>
+        <div class="card" style="margin-bottom: var(--margin-xxl); border-left: 4px solid var(--color-terracotta);">
+            <p style="color: var(--color-charcoal);">Ces 4 mécanismes se <strong>complètent</strong> naturellement dans un workflow réel :</p>
+        </div>
+        <div class="flex-col" style="gap: var(--gap-lg);">
+            <div class="card" style="display: flex; gap: var(--gap-xl); align-items: flex-start; border-left: 4px solid var(--color-blue);">
+                <div style="font-size: var(--font-size-icon-md); min-width: 40px; text-align: center;">🧩</div>
+                <div>
+                    <strong style="color: var(--color-blue);">Skill "code-review"</strong>
+                    <p style="color: var(--color-charcoal); margin-top: var(--margin-xs);">Charge les instructions et standards d'équipe</p>
+                </div>
+            </div>
+            <div class="card" style="display: flex; gap: var(--gap-xl); align-items: flex-start; border-left: 4px solid var(--color-green);">
+                <div style="font-size: var(--font-size-icon-md); min-width: 40px; text-align: center;">🤖</div>
+                <div>
+                    <strong style="color: var(--color-green);">→ invoque le subagent "security-reviewer"</strong>
+                    <p style="color: var(--color-charcoal); margin-top: var(--margin-xs);">Analyse isolée dans son propre contexte</p>
+                </div>
+            </div>
+            <div class="card" style="display: flex; gap: var(--gap-xl); align-items: flex-start; border-left: 4px solid var(--color-terracotta);">
+                <div style="font-size: var(--font-size-icon-md); min-width: 40px; text-align: center;">🪝</div>
+                <div>
+                    <strong style="color: var(--color-terracotta);">→ un hook PostToolUse formate le code</strong>
+                    <p style="color: var(--color-charcoal); margin-top: var(--margin-xs);">Automatiquement, sans que Claude ne décide</p>
+                </div>
+            </div>
+            <div class="card" style="display: flex; gap: var(--gap-xl); align-items: flex-start; border-left: 4px solid var(--color-amber);">
+                <div style="font-size: var(--font-size-icon-md); min-width: 40px; text-align: center;">🔌</div>
+                <div>
+                    <strong style="color: var(--color-amber);">→ un serveur MCP GitHub crée la PR directement</strong>
+                    <p style="color: var(--color-charcoal); margin-top: var(--margin-xs);">Connexion native à votre écosystème</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide : Certifications & Ressources -->
+    <section>
+        <h2>Certifications & Ressources</h2>
+        <div class="grid-2" style="align-items: start;">
+            <div class="card" style="border-left: 4px solid var(--color-terracotta);">
+                <strong style="color: var(--color-terracotta);">🎓 Certifications Anthropic (gratuites)</strong>
+                <div class="flex-col" style="gap: var(--gap-md); margin-top: var(--margin-xl);">
+                    <div style="display: flex; align-items: center; gap: var(--gap-md);">
+                        <span style="font-size: var(--font-size-icon-sm);">🧩</span>
+                        <div>
+                            <p style="color: var(--color-charcoal); font-weight: 600;">Introduction to Agent Skills</p>
+                            <p style="color: var(--color-charcoal);">anthropic.skilljar.com — ~1h</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: var(--gap-md);">
+                        <span style="font-size: var(--font-size-icon-sm);">🤖</span>
+                        <div>
+                            <p style="color: var(--color-charcoal); font-weight: 600;">Introduction to Subagents</p>
+                            <p style="color: var(--color-charcoal);">anthropic.skilljar.com — ~1h</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: var(--gap-md);">
+                        <span style="font-size: var(--font-size-icon-sm);">🪝</span>
+                        <div>
+                            <p style="color: var(--color-charcoal); font-weight: 600;">Claude Code in Action (Hooks)</p>
+                            <p style="color: var(--color-charcoal);">anthropic.skilljar.com — ~2h</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-col" style="gap: var(--gap-lg);">
+                <div class="card" style="border-left: 4px solid var(--color-blue);">
+                    <strong style="color: var(--color-blue);">Documentation officielle</strong>
+                    <div class="flex-col" style="gap: var(--gap-xs); margin-top: var(--margin-md);">
+                        <p style="color: var(--color-charcoal);">📖 <code style="color: var(--color-charcoal);">code.claude.com/docs</code></p>
+                        <p style="color: var(--color-charcoal);">🛠 <code style="color: var(--color-charcoal);">platform.claude.com/docs</code></p>
+                    </div>
+                </div>
+                <div class="card" style="border-left: 4px solid var(--color-green);">
+                    <strong style="color: var(--color-green);">Repos utiles</strong>
+                    <div class="flex-col" style="gap: var(--gap-xs); margin-top: var(--margin-md);">
+                        <p style="color: var(--color-charcoal);">⭐ <code style="color: var(--color-charcoal);">github.com/anthropics/skills</code></p>
+                        <p style="color: var(--color-charcoal);">🌐 <code style="color: var(--color-charcoal);">agentskills.io</code></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide : Prochain workshop -->
+    <section class="center" style="text-align: center;">
+        <h2>Prochain workshop</h2>
+        <p class="text-muted" style="font-weight: 600; letter-spacing: 2px; margin-bottom: var(--gap-xxl);">FRAMEWORKS IA</p>
+        <div style="display: flex; gap: var(--gap-xl); justify-content: center;">
+            <div class="card flex-col" style="flex: 1; max-width: 250px; border-top: 4px solid var(--color-terracotta);">
+                <div style="text-align: center; margin-bottom: var(--margin-xl);">
+                    <span style="font-size: var(--font-size-icon-lg);">⚡</span>
+                    <p style="font-weight: 700; margin-top: var(--margin-md); color: var(--color-terracotta);">SuperPower</p>
+                </div>
+                <p style="color: var(--color-charcoal);">Orchestration avancée d'agents</p>
+            </div>
+            <div class="card flex-col" style="flex: 1; max-width: 250px; border-top: 4px solid var(--color-blue);">
+                <div style="text-align: center; margin-bottom: var(--margin-xl);">
+                    <span style="font-size: var(--font-size-icon-lg);">🏃</span>
+                    <p style="font-weight: 700; margin-top: var(--margin-md); color: var(--color-blue);">BMAD Method</p>
+                </div>
+                <p style="color: var(--color-charcoal);">Agile methodology pour agents IA</p>
+            </div>
+            <div class="card flex-col" style="flex: 1; max-width: 250px; border-top: 4px solid var(--color-green);">
+                <div style="text-align: center; margin-bottom: var(--margin-xl);">
+                    <span style="font-size: var(--font-size-icon-lg);">🔗</span>
+                    <p style="font-weight: 700; margin-top: var(--margin-md); color: var(--color-green);">Compound Engineering</p>
+                </div>
+                <p style="color: var(--color-charcoal);">Patterns de composition en production</p>
+            </div>
+        </div>
+        <p style="margin-top: var(--gap-xxl); color: var(--color-charcoal);">Ces frameworks s'appuient exactement sur ce qu'on a vu aujourd'hui — vous êtes prêts. 🚀</p>
+    </section>
+
+</section>

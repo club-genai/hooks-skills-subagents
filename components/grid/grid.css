@@ -1,0 +1,46 @@
+/* ═══════════════════════════════════════════════════
+   GRID & FLEX — Layouts de colonnes
+   ═══════════════════════════════════════════════════
+
+   .grid-2       → 2 colonnes égales (CSS grid)
+   .flex-row     → rangée flex (outils/capacités côte à côte)
+   .flex-col     → colonne flex (stack verticale)
+
+   RÈGLE DA :
+   • Toujours ajouter align-items: start (ou stretch) à .grid-2
+     quand les cards ont des hauteurs différentes.
+   • grid-2 par défaut = align-items: center (neutre)
+*/
+
+/* ── 2 colonnes égales ───────────────────────────── */
+.grid-2 {
+  display:               grid;
+  grid-template-columns: 1fr 1fr;
+  gap:                   var(--gap-xl);
+  align-items:           center;  /* overrider avec style="align-items:start" si hauteurs diff */
+}
+
+/* ── Rangée flex (listing horizontal) ───────────── */
+.flex-row {
+  display:     flex;
+  flex-wrap:   wrap;
+  gap:         var(--gap-md);
+  align-items: stretch;
+}
+
+.flex-row > * {
+  flex: 1;
+  min-width: 0;  /* empêche le débordement sur les <pre> */
+}
+
+/* ── Colonne flex (stack verticale) ─────────────── */
+.flex-col {
+  display:        flex;
+  flex-direction: column;
+  gap:            var(--gap-lg);
+}
+
+/* ── Utilitaires d'alignement ────────────────────── */
+.align-start   { align-items: flex-start; }
+.align-center  { align-items: center; }
+.align-stretch { align-items: stretch; }

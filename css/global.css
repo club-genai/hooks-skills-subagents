@@ -1,0 +1,187 @@
+/* ═══════════════════════════════════════════════════
+   GLOBAL — Club GenΛI Design System
+   Variables de palette, typography, spacing (em)
+   ═══════════════════════════════════════════════════ */
+
+:root {
+
+  /* ── Palette principale ─────────────────────────── */
+  --color-cream:        #faf9f5;
+  --color-cream-card:   #f0ede6;
+  --color-charcoal:     #141413;
+  --color-stone:        #b0aea5;
+  --color-sand:         #e8e6dc;
+  --color-terracotta:   #d97757;
+  --color-terracotta-dark: #b85c3a;
+
+  /* ── Palette secondaire ─────────────────────────── */
+  --color-blue:   #7c9ab8;
+  --color-green:  #8aad8a;
+  --color-red:    #d9534f;   /* réservé alertes/danger uniquement */
+  --color-amber:  #f0ad4e;
+
+  /* ── Typography ─────────────────────────────────── */
+  --font-body:      'Inter', Helvetica, sans-serif;
+  --font-code:      'Courier New', monospace;
+
+  /* Tailles relatives à la base Reveal (18px réelle après override index.html) */
+  --font-size-body:       0.88em;   /* texte courant dans les cards */
+  --font-size-secondary:  0.78em;   /* texte secondaire, descriptions */
+  --font-size-code:       0.80em;   /* blocs <pre> */
+  --font-size-label:      0.68em;   /* group-label uppercase, badges tag */
+  --font-size-subtitle:   0.95em;   /* sous-titres, accroches */
+  --font-size-url:        1.10em;   /* URL mise en avant */
+  --font-size-card-title: 0.95em;   /* titres de card */
+  --font-size-icon-sm:    1.6em;    /* petites icônes emoji inline */
+  --font-size-icon-md:    2.4em;    /* icônes emoji medium */
+  --font-size-icon-lg:    2.8em;    /* grandes icônes (cards horizontales) */
+  --font-size-hero:       3.8em;    /* titre hero (vestiair h1) */
+
+  /* ── Spacing (em — scale avec Reveal) ───────────── */
+  /* Gaps entre éléments */
+  --gap-xs:   0.25em;   /* ≈ 4px  — séparation minimale */
+  --gap-sm:   0.40em;   /* ≈ 7px  — éléments très proches */
+  --gap-md:   0.55em;   /* ≈ 10px — gap standard cards */
+  --gap-lg:   0.75em;   /* ≈ 14px — gap entre groupes */
+  --gap-xl:   1.10em;   /* ≈ 20px — gap majeur */
+  --gap-xxl:  1.65em;   /* ≈ 30px — gap entre sections */
+
+  /* Margins inline */
+  --margin-xs:   0.20em;
+  --margin-sm:   0.33em;
+  --margin-md:   0.44em;
+  --margin-lg:   0.55em;
+  --margin-xl:   0.66em;
+  --margin-xxl:  0.88em;
+  --margin-xxxl: 1.10em;
+
+  /* Paddings internes */
+  --padding-xs:  0.33em;   /* card très compacte */
+  --padding-sm:  0.55em;   /* card compacte */
+  --padding-md:  0.75em;   /* card normale */
+  --padding-lg:  1.00em;   /* card aérée */
+
+  /* ── Reveal.js overrides ─────────────────────────── */
+  --r-background-color:         var(--color-cream);
+  --r-main-font:                var(--font-body);
+  --r-main-font-size:           18px;  /* valeur de référence — px enforced dans index.html */
+  --r-main-color:               var(--color-charcoal);
+  --r-block-margin:             var(--margin-xxl);
+  --r-heading-margin:           0 0 var(--margin-xxl) 0;
+  --r-heading-font:             var(--font-body);
+  --r-heading-color:            var(--color-charcoal);
+  --r-heading-line-height:      1.2;
+  --r-heading-letter-spacing:   normal;
+  --r-heading-text-transform:   none;
+  --r-heading-text-shadow:      none;
+  --r-heading-font-weight:      800;
+  --r-heading1-size:            3.3em;
+  --r-heading2-size:            2.4em;
+  --r-heading3-size:            2.0em;
+  --r-heading4-size:            1.5em;
+  --r-code-font:                var(--font-code);
+  --r-link-color:               var(--color-terracotta);
+  --r-link-color-hover:         var(--color-terracotta-dark);
+  --r-selection-background-color: var(--color-sand);
+  --r-selection-color:          var(--color-charcoal);
+}
+
+/* ── Reset & base ────────────────────────────────── */
+body, .reveal {
+  color:            var(--r-main-color);
+  background-color: var(--r-background-color);
+  font-family:      var(--r-main-font);
+}
+
+.reveal .slide-background {
+  background-color: var(--r-background-color);
+}
+
+.reveal section {
+  text-align: left;
+}
+
+/* ── Headings ────────────────────────────────────── */
+.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+  color:         var(--color-charcoal);
+  font-weight:   800;
+  margin-bottom: var(--margin-xxl);
+}
+
+.reveal h1 {
+  color:      var(--color-terracotta);
+  text-align: center;
+}
+
+.reveal h2 {
+  color:          var(--color-terracotta);
+  border-bottom:  2px solid var(--color-sand);
+  padding-bottom: var(--padding-xs);
+  display:        inline-block;
+}
+
+/* ── Inline typography ───────────────────────────── */
+.reveal strong {
+  color: var(--color-terracotta);
+}
+
+.reveal p, .reveal li {
+  line-height:  1.5;
+  font-weight:  400;
+  font-size:    var(--font-size-body);
+}
+
+.text-muted {
+  color:     var(--color-stone);
+  font-size: var(--font-size-subtitle);
+}
+
+/* ── Controls & progress ─────────────────────────── */
+.reveal .progress {
+  color: var(--color-terracotta);
+}
+
+.reveal .controls {
+  color: var(--color-terracotta);
+}
+
+/* ── Step-list (numérotée) ───────────────────────── */
+body {
+  counter-reset: step-counter;
+}
+
+.step-list {
+  list-style: none;
+  padding:    0;
+  margin:     0;
+}
+
+.step-list li {
+  position:    relative;
+  padding-left: 2.8em;
+  margin-bottom: var(--margin-xxl);
+}
+
+.step-list li::before {
+  content:          counter(step-counter);
+  counter-increment: step-counter;
+  position:         absolute;
+  left:             0;
+  top:              -0.1em;
+  width:            2em;
+  height:           2em;
+  background-color: var(--color-cream-card);
+  color:            var(--color-terracotta);
+  border:           2px solid var(--color-terracotta);
+  border-radius:    50%;
+  display:          flex;
+  align-items:      center;
+  justify-content:  center;
+  font-weight:      bold;
+  font-size:        0.8em;
+}
+
+/* Hebergeur slide — vertical centering */
+.reveal section.slide-hebergeur {
+  padding-top: 120px;
+}

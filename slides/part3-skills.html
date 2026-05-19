@@ -1,0 +1,278 @@
+<!-- PARTIE 3 : Skills -->
+<section>
+
+    <!-- Slide titre de la partie -->
+    <section class="center" style="text-align: center;">
+        <h1>🧩<br>Partie 2 : Skills</h1>
+        <p class="text-muted" style="font-weight: 600; letter-spacing: 2px;">25 MINUTES</p>
+    </section>
+
+    <!-- Slide : Qu'est-ce qu'une Skill ? -->
+    <section>
+        <h2>Qu'est-ce qu'une Skill ?</h2>
+        <div class="card" style="margin-bottom: var(--margin-xxxl); border-left: 4px solid var(--color-terracotta);">
+            <p>
+                Une Skill est un <strong>dossier d'instructions, de scripts et de ressources</strong> que Claude charge dynamiquement pour améliorer ses performances sur des tâches spécifiques.
+            </p>
+        </div>
+        <div class="grid-2" style="align-items: start;">
+            <div class="card" style="border-left: 4px solid var(--color-blue);">
+                <strong style="color: var(--color-blue);">Structure d'une Skill</strong>
+                <pre style="background: var(--color-charcoal); color: var(--color-cream); padding: var(--padding-lg); border-radius: 8px; margin-top: var(--margin-lg); line-height: 1.9;">ma-skill/
+├── SKILL.md        ← Requis
+├── references/     ← Docs détaillées
+│   └── api.md
+├── scripts/        ← Scripts exécutables
+│   └── validate.sh
+├── assets/         ← Ressources
+└── evals/          ← Tests de validation
+    └── evals.json</pre>
+            </div>
+            <div class="flex-col" style="gap: var(--gap-xl);">
+                <div class="card" style="border-left: 4px solid var(--color-terracotta);">
+                    <strong style="color: var(--color-terracotta);">Où les placer ?</strong>
+                    <div style="display: grid; grid-template-columns: 5em 1fr; gap: var(--gap-xs) var(--gap-md); align-items: center; margin-top: var(--margin-md);">
+                        <span class="tag tag--outline" style="--tag-color: var(--color-green); justify-self: start;">PROJET</span>
+                        <code style="font-size: var(--font-size-secondary);">.claude/skills/</code>
+
+                        <span class="tag tag--outline" style="--tag-color: var(--color-blue); justify-self: start;">USER</span>
+                        <code style="font-size: var(--font-size-secondary);">~/.claude/skills/</code>
+                    </div>
+                </div>
+                <div class="card" style="border-left: 4px solid var(--color-green);">
+                    <p style="color: var(--color-charcoal);">💡 <strong style="color: var(--color-green);">Analogie :</strong> comme un guide d'onboarding pour un nouvel employé. Pas besoin de lui expliquer le contexte à chaque fois.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide : Progressive Disclosure -->
+    <section>
+        <h2>La divulgation progressive</h2>
+        <div class="card" style="margin-bottom: var(--margin-xxl); border-left: 4px solid var(--color-terracotta);">
+            <p style="color: var(--color-charcoal);">Claude ne charge que ce dont il a besoin, quand il en a besoin. La quantité de contexte est <strong>effectivement illimitée</strong>.</p>
+        </div>
+        <div class="flex-col" style="gap: var(--gap-lg);">
+            <div class="card" style="border-left: 4px solid var(--color-blue); display: flex; gap: var(--gap-xl); align-items: flex-start;">
+                <div style="font-size: var(--font-size-icon-lg); min-width: 40px; text-align: center;">1️⃣</div>
+                <div>
+                    <strong style="color: var(--color-blue);">name + description</strong>
+                    <p style="color: var(--color-charcoal); margin-top: var(--margin-xs);">Toujours en mémoire — Claude décide si la skill est pertinente</p>
+                </div>
+            </div>
+            <div class="card" style="border-left: 4px solid var(--color-green); display: flex; gap: var(--gap-xl); align-items: flex-start;">
+                <div style="font-size: var(--font-size-icon-lg); min-width: 40px; text-align: center;">2️⃣</div>
+                <div>
+                    <strong style="color: var(--color-green);">Contenu du SKILL.md</strong>
+                    <p style="color: var(--color-charcoal); margin-top: var(--margin-xs);">Chargé si la skill est jugée pertinente</p>
+                </div>
+            </div>
+            <div class="card" style="border-left: 4px solid var(--color-amber); display: flex; gap: var(--gap-xl); align-items: flex-start;">
+                <div style="font-size: var(--font-size-icon-lg); min-width: 40px; text-align: center;">3️⃣</div>
+                <div>
+                    <strong style="color: var(--color-amber);">Fichiers de référence, scripts, assets</strong>
+                    <p style="color: var(--color-charcoal); margin-top: var(--margin-xs);">Chargés uniquement si nécessaires pour la tâche</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide : Le fichier SKILL.md -->
+    <section>
+        <h2>Le fichier SKILL.md</h2>
+        <div class="grid-2" style="align-items: start;">
+            <div class="card" style="border-left: 4px solid var(--color-blue);">
+                <strong style="color: var(--color-blue);">Format obligatoire</strong>
+                <pre style="background: var(--color-charcoal); color: var(--color-cream); padding: var(--padding-lg); border-radius: 8px; margin-top: var(--margin-lg); line-height: 1.8;">---
+name: nom-de-la-skill        # (obligatoire)
+description: Ce que fait la skill
+  et QUAND l'utiliser (crucial !) # (obligatoire)
+model: haiku                 # (optionnel) haiku | sonnet | opus
+allowed-tools: [Bash, Read]  # (optionnel) restreint les outils disponibles
+---
+
+# Nom de la Skill            # (obligatoire)
+
+## Ce que tu dois faire      # (obligatoire)
+
+Instructions détaillées...
+
+## Gotchas (erreurs courantes) # (optionnel)
+
+- Ne jamais faire X car...
+- Toujours vérifier Y avant...</pre>
+            </div>
+            <div class="flex-col" style="gap: var(--gap-xl);">
+                <div class="card" style="border-left: 4px solid var(--color-amber);">
+                    <strong style="color: var(--color-amber);">⚠️ Le champ description est crucial</strong>
+                    <p style="color: var(--color-charcoal); margin-top: var(--margin-md);">C'est ce que Claude lit pour décider d'utiliser la skill. Soyez précis sur les <strong style="color: var(--color-amber);">déclencheurs</strong>.</p>
+                </div>
+                <div class="card" style="border-left: 4px solid var(--color-green);">
+                    <strong style="color: var(--color-green);">Skills officielles Anthropic</strong>
+                    <p style="color: var(--color-charcoal); margin-top: var(--margin-md);">17 skills open-source disponibles :</p>
+                    <p style="color: var(--color-charcoal); margin-top: var(--margin-sm);">PowerPoint, Excel, Word, PDF, frontend-design…</p>
+                    <div style="margin-top: var(--margin-lg);">
+                        <span class="tag tag--outline" style="--tag-color: var(--color-green);">github.com/anthropics/skills</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide : TP — Exercice 1 : Code Review -->
+    <section>
+        <h2>🛠 TP 1 — Skill "Code Review" (8 min)</h2>
+        <div class="card" style="margin-bottom: var(--padding-lg); border-left: 4px solid var(--color-terracotta);">
+            <p style="color: var(--color-charcoal);"><strong>Objectif :</strong> créer une skill de revue de code qui enforce vos standards d'équipe.</p>
+        </div>
+        <div class="grid-2" style="align-items: start;">
+            <div class="card" style="border-left: 4px solid var(--color-blue);">
+                <strong style="color: var(--color-blue);">1. Créer la structure</strong>
+                <pre style="background: var(--color-charcoal); color: var(--color-cream); padding: var(--padding-md); border-radius: 8px; margin-top: var(--margin-md); line-height: 1.8;">mkdir -p .claude/skills/code-review
+touch .claude/skills/code-review/SKILL.md</pre>
+                <strong style="color: var(--color-blue); display: block; margin-top: var(--margin-md);">2. Le SKILL.md</strong>
+                <pre style="background: var(--color-charcoal); color: var(--color-cream); padding: var(--padding-sm); border-radius: 8px; margin-top: var(--margin-sm); line-height: 1.45; font-size: 0.65em; white-space: pre-wrap; word-wrap: break-word; overflow-x: hidden;">---
+name: code-review
+description: Effectue une revue de code selon
+  nos standards. Utiliser quand l'utilisateur
+  demande une "revue" ou "review".
+model: haiku
+allowed-tools: [Read, Bash]
+---
+
+# Code Review — Standards Équipe
+
+## Checklist
+🔒 Sécurité — Pas de secrets en dur
+📖 Lisibilité — Fonctions &lt; 30 lignes
+⚡ Performance — Pas de N+1 queries
+🧪 Tests — Cas nominaux couverts
+
+## Format de réponse
+Résumé en 1-2 phrases, puis :
+### 🔴 Bloquants — problème + numéro de ligne
+### 🟡 Améliorations — problème + suggestion
+### 🟢 Points positifs — au moins un</pre>
+            </div>
+            <div class="card" style="border-left: 4px solid var(--color-green);">
+                <strong style="color: var(--color-green);">3. Tester</strong>
+                <p style="color: var(--color-charcoal); font-size: var(--font-size-secondary); margin-top: var(--margin-sm);">Le fichier <code>src/auth.js</code> à créer est dans la <strong>slide suivante</strong> ↓</p>
+                <pre style="background: var(--color-charcoal); color: var(--color-cream); padding: var(--padding-sm); border-radius: 8px; margin-top: var(--margin-sm); font-size: 0.75em; line-height: 1.6; white-space: pre-wrap;">Peux-tu faire une revue
+du fichier src/auth.js ?</pre>
+                <div class="flex-col" style="gap: var(--gap-xs); margin-top: var(--margin-md);">
+                    <p style="color: var(--color-charcoal); font-size: var(--font-size-secondary);">✅ Avec la skill → réponse structurée 🔴 / 🟡 / 🟢</p>
+                    <p style="color: var(--color-charcoal); font-size: var(--font-size-secondary);">✅ Sans la skill → réponse libre, non structurée</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide : TP1 — Fichier de test auth.js -->
+    <section>
+        <h2>🛠 TP 1 — Fichier de test <code>src/auth.js</code></h2>
+        <div class="card card--intro">
+            <p style="color: var(--color-charcoal);">💡 <strong style="color: var(--color-terracotta);">Créer ce fichier</strong> puis demander à Claude : <code>Peux-tu faire une revue du fichier src/auth.js ?</code></p>
+        </div>
+        <div style="display: flex; gap: var(--gap-md); align-items: start; margin-top: var(--margin-md);">
+            <pre style="flex: 1; min-width: 0; background: var(--color-charcoal); color: var(--color-cream); padding: var(--padding-sm); border-radius: 8px; line-height: 1.5; font-size: 0.68em; white-space: pre-wrap; word-wrap: break-word; overflow-x: hidden;">const DB_PASSWORD = "admin1234";
+const API_KEY = "sk-prod-abc123";
+
+async function loginUser(username, password) {
+  const user = await db.query(
+    `SELECT * FROM users WHERE username = '${username}'`
+  );
+  if (!user) return null;
+
+  if (user.password === password) {
+    const token = Math.random().toString(36);
+    await db.query(`UPDATE users SET token='${token}' WHERE id=${user.id}`);
+    await db.query(`INSERT INTO logs VALUES (${user.id}, 'login', NOW())`);
+    await db.query(`SELECT * FROM roles WHERE user_id=${user.id}`);
+    await db.query(`SELECT * FROM perms WHERE user_id=${user.id}`);
+    console.log("User logged in: " + username);
+    return token;
+  }
+  return false;
+}
+
+function a(u, p) { return loginUser(u, p); }
+
+module.exports = { loginUser, a };</pre>
+            <div class="flex-col" style="gap: var(--gap-sm); width: 210px; min-width: 210px;">
+                <div class="card card--compact" style="border-left: 4px solid var(--color-terracotta);">
+                    <strong style="color: var(--color-terracotta); font-size: var(--font-size-secondary);">🔴 Doit remonter</strong>
+                    <div class="flex-col" style="gap: var(--gap-xs); margin-top: var(--margin-xs);">
+                        <span style="color: var(--color-charcoal); font-size: var(--font-size-secondary);">• Secrets en dur (ligne 1-2)</span>
+                        <span style="color: var(--color-charcoal); font-size: var(--font-size-secondary);">• Injection SQL (ligne 5-7)</span>
+                        <span style="color: var(--color-charcoal); font-size: var(--font-size-secondary);">• Mot de passe comparé en clair</span>
+                    </div>
+                </div>
+                <div class="card card--compact" style="border-left: 4px solid var(--color-amber);">
+                    <strong style="color: var(--color-amber); font-size: var(--font-size-secondary);">🟡 Peut remonter</strong>
+                    <div class="flex-col" style="gap: var(--gap-xs); margin-top: var(--margin-xs);">
+                        <span style="color: var(--color-charcoal); font-size: var(--font-size-secondary);">• Token trop faible (Math.random)</span>
+                        <span style="color: var(--color-charcoal); font-size: var(--font-size-secondary);">• 2 requêtes N+1 (roles, perms)</span>
+                        <span style="color: var(--color-charcoal); font-size: var(--font-size-secondary);">• console.log en production</span>
+                        <span style="color: var(--color-charcoal); font-size: var(--font-size-secondary);">• Fonction <code>a()</code> non descriptive</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide : TP — Exercice 2 : Skill avec références -->
+    <section>
+        <h2>🛠 TP 2 — Skill avec fichiers de référence (7 min)</h2>
+        <div class="card" style="margin-bottom: var(--padding-lg); border-left: 4px solid var(--color-terracotta);">
+            <p style="color: var(--color-charcoal);"><strong>Objectif :</strong> créer une skill "commit-message" qui génère des commits conventionnels parfaits.</p>
+        </div>
+        <div class="grid-2" style="align-items: start;">
+            <div class="card" style="border-left: 4px solid var(--color-blue);">
+                <strong style="color: var(--color-blue);">SKILL.md</strong>
+                <pre style="background: var(--color-charcoal); color: var(--color-cream); padding: var(--padding-md); border-radius: 8px; margin-top: var(--margin-md); line-height: 1.7;">---
+name: commit-message
+description: Génère des messages de commit
+  Conventional Commits. Utiliser quand
+  l'utilisateur veut "commiter".
+---
+
+## Processus
+1. git diff --staged
+2. Identifier le type (feat, fix, chore…)
+3. Rédiger selon le format
+
+## Format
+&lt;type&gt;(&lt;scope&gt;): &lt;description&gt;
+
+[corps si changement complexe]</pre>
+            </div>
+            <div class="card" style="border-left: 4px solid var(--color-green);">
+                <strong style="color: var(--color-green);">references/conventional-commits.md</strong>
+                <p style="color: var(--color-stone); font-size: var(--font-size-secondary); margin-top: var(--margin-xs);">Créer ce fichier et y coller le contenu :</p>
+                <pre style="background: var(--color-charcoal); color: var(--color-cream); padding: var(--padding-sm); border-radius: 8px; margin-top: var(--margin-sm); line-height: 1.5; font-size: 0.65em; white-space: pre-wrap; word-wrap: break-word; overflow-x: hidden;"># Conventional Commits — Référence
+
+## Types
+- feat     : nouvelle fonctionnalité
+- fix      : correction de bug
+- chore    : maintenance, dépendances, CI
+- refactor : refactoring sans bug fix ni feature
+- docs     : documentation uniquement
+- test     : ajout ou modification de tests
+- style    : formatage, pas de logique
+
+## Format
+&lt;type&gt;(&lt;scope&gt;): &lt;description courte&gt;
+
+[corps optionnel si changement complexe]
+
+## Exemples
+feat(auth): add OAuth2 login
+fix(cart): prevent negative quantity
+chore(deps): update jest to v29
+docs(readme): add setup instructions</pre>
+                <p style="color: var(--color-charcoal); margin-top: var(--margin-sm); font-size: var(--font-size-secondary);">Claude consulte ce fichier uniquement si nécessaire. <strong style="color: var(--color-green);">Progressive Disclosure !</strong></p>
+            </div>
+        </div>
+    </section>
+
+</section>

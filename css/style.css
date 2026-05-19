@@ -9,10 +9,47 @@
   --color-terracotta: #d97757;
   --color-terracotta-dark: #b85c3a;
 
+  /* Slide content font sizes — change here to affect all slides */
+  --font-size-body: 0.93em;       /* paragraphes, listes */
+  --font-size-code: 0.83em;       /* blocs <pre> */
+  --font-size-label: 0.72em;      /* badges <span class="tag"> */
+  --font-size-subtitle: 1.02em;   /* sous-titres, accroches */
+  --font-size-url: 1.17em;        /* URL mise en avant (vestiair) */
+  --font-size-card-title: 1.02em; /* titres de card <strong> */
+  --font-size-icon-sm: 1.8em;     /* petites icônes emoji inline */
+  --font-size-icon-md: 2.7em;     /* icônes emoji medium (listes à icônes) */
+  --font-size-icon-lg: 3em;       /* grandes icônes (cards horizontales) */
+  --font-size-hero: 4.2em;        /* titre hero (vestiair h1) */
+
+  /* Couleurs secondaires */
+  --color-blue: #7c9ab8;
+  --color-green: #8aad8a;
+  --color-red: #d9534f;
+  --color-amber: #f0ad4e;
+
+  /* Espacements communs */
+  --gap-xs: 6px;
+  --gap-sm: 8px;
+  --gap-md: 10px;
+  --gap-lg: 12px;
+  --gap-xl: 20px;
+  --gap-xxl: 30px;
+  --margin-xs: 4px;
+  --margin-sm: 6px;
+  --margin-md: 8px;
+  --margin-lg: 10px;
+  --margin-xl: 12px;
+  --margin-xxl: 16px;
+  --margin-xxxl: 20px;
+  --padding-sm: 10px;
+  --padding-md: 12px;
+  --padding-lg: 14px;
+  --padding-xl: 16px;
+
   /* Reveal standard variables overrides */
   --r-background-color: var(--color-cream);
   --r-main-font: 'Inter', Helvetica, sans-serif;
-  --r-main-font-size: 38px;
+  --r-main-font-size: 64px;
   --r-main-color: var(--color-charcoal);
   --r-block-margin: 20px;
   --r-heading-margin: 0 0 20px 0;
@@ -23,10 +60,10 @@
   --r-heading-text-transform: none;
   --r-heading-text-shadow: none;
   --r-heading-font-weight: 800;
-  --r-heading1-size: 2.2em;
-  --r-heading2-size: 1.6em;
-  --r-heading3-size: 1.3em;
-  --r-heading4-size: 1em;
+  --r-heading1-size: 3.3em;
+  --r-heading2-size: 2.4em;
+  --r-heading3-size: 2em;
+  --r-heading4-size: 1.5em;
   --r-code-font: 'Courier New', monospace;
   --r-link-color: var(--color-terracotta);
   --r-link-color-hover: var(--color-terracotta-dark);
@@ -40,6 +77,15 @@ body, .reveal {
   font-family: var(--r-main-font);
 }
 
+.reveal .slides {
+  font-size: var(--r-main-font-size) !important;
+}
+
+.reveal h1 { font-size: var(--r-heading1-size) !important; }
+.reveal h2 { font-size: var(--r-heading2-size) !important; }
+.reveal h3 { font-size: var(--r-heading3-size) !important; }
+.reveal h4 { font-size: var(--r-heading4-size) !important; }
+
 .reveal .slide-background {
   background-color: var(--r-background-color);
 }
@@ -48,6 +94,7 @@ body, .reveal {
 .reveal section {
   text-align: left;
 }
+
 
 /* Typography Overrides */
 .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
@@ -79,6 +126,7 @@ body, .reveal {
 
 .text-muted {
   color: var(--color-stone);
+  font-size: var(--font-size-subtitle);
 }
 
 /* Layout Helpers */
@@ -117,12 +165,28 @@ body, .reveal {
     border: none;
 }
 
+.card p, .card li {
+    color: var(--color-charcoal);
+    font-size: var(--font-size-body);
+}
+
+pre {
+    font-size: var(--font-size-code);
+}
+
+.tag {
+    font-size: var(--font-size-label);
+}
+
+.card strong {
+    font-weight: 700;
+}
+
 .tag {
     display: inline-block;
     color: var(--color-cream);
     padding: 6px 16px;
     border-radius: 30px;
-    font-size: 0.5em;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -138,8 +202,15 @@ code {
     color: var(--color-terracotta);
     padding: 4px 8px;
     border-radius: 6px;
-    font-size: 0.85em;
+    font-size: var(--font-size-body);
     font-weight: 600;
+}
+
+pre {
+    font-family: var(--r-code-font);
+    white-space: pre;
+    word-wrap: normal;
+    overflow-x: auto;
 }
 
 .step-list {

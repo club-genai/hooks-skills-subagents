@@ -1,0 +1,83 @@
+<!--
+  TABLEAU — Layout label + cards sur une ligne
+  ═══════════════════════════════════════════════════
+
+  Pattern : colonne label fixe avec border-right colorée + cards à droite.
+  Chaque ligne est une rangée flex. Les lignes s'empilent dans un flex-col.
+
+  RÈGLE DA :
+  • Utiliser quand on liste 2–4 catégories avec chacune 1–2 cards associées
+  • Le label column a une largeur fixe (ex. 90px) + border-right colorée
+  • align-items: center sur chaque ligne → cards à hauteur naturelle (pas stretch)
+  • Couleur border-right = couleur des cards de la ligne
+  • Texte du label : font-weight 700, font-size --font-size-secondary, color = couleur de la ligne
+  • NE PAS utiliser .group pour ce pattern — .group force une hauteur qui crée du vide
+
+  DIFFÉRENCE avec .group :
+  • .group → cards grandes, contenu centré, adapté à du contenu riche
+  • tableau → cards compactes, alignées horizontalement, adapté aux listes denses
+
+  ───────────────────────────────────────────────────
+  Exemple : 3 événements du cycle de vie (début / exécution / fin)
+  ───────────────────────────────────────────────────
+-->
+<div class="flex-col" style="gap: var(--gap-sm);">
+
+  <!-- Ligne 1 : couleur green -->
+  <div style="display: flex; align-items: center; gap: var(--gap-md);">
+    <div style="width: 90px; min-width: 90px; border-right: 3px solid var(--color-green); padding-right: var(--padding-sm); text-align: right;">
+      <span style="font-size: var(--font-size-secondary); font-weight: 700; color: var(--color-green);">Début</span>
+    </div>
+    <div style="display: flex; gap: var(--gap-sm); flex: 1;">
+      <div class="card card--compact" style="flex: 1; border-top: 4px solid var(--color-green);">
+        <p style="font-weight: 700; color: var(--color-charcoal);">SessionStart</p>
+        <p style="color: var(--color-charcoal); margin-top: var(--margin-xs);">Démarrage de session</p>
+        <span class="tag tag--neutral" style="margin-top: var(--margin-xs);">Non-bloquant</span>
+      </div>
+      <div class="card card--compact" style="flex: 1; border-top: 4px solid var(--color-green);">
+        <p style="font-weight: 700; color: var(--color-charcoal);">UserPromptSubmit</p>
+        <p style="color: var(--color-charcoal); margin-top: var(--margin-xs);">Avant que le prompt atteigne Claude</p>
+        <span class="tag tag--outline" style="--tag-color: var(--color-green); margin-top: var(--margin-xs);">Peut bloquer</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ligne 2 : couleur blue -->
+  <div style="display: flex; align-items: center; gap: var(--gap-md);">
+    <div style="width: 90px; min-width: 90px; border-right: 3px solid var(--color-blue); padding-right: var(--padding-sm); text-align: right;">
+      <span style="font-size: var(--font-size-secondary); font-weight: 700; color: var(--color-blue);">Exécution</span>
+    </div>
+    <div style="display: flex; gap: var(--gap-sm); flex: 1;">
+      <div class="card card--compact" style="flex: 1; border-top: 4px solid var(--color-blue);">
+        <p style="font-weight: 700; color: var(--color-charcoal);">PreToolUse</p>
+        <p style="color: var(--color-charcoal); margin-top: var(--margin-xs);">Avant l'exécution d'un outil</p>
+        <span class="tag tag--outline" style="--tag-color: var(--color-blue); margin-top: var(--margin-xs);">Peut bloquer</span>
+      </div>
+      <div class="card card--compact" style="flex: 1; border-top: 4px solid var(--color-blue);">
+        <p style="font-weight: 700; color: var(--color-charcoal);">PostToolUse</p>
+        <p style="color: var(--color-charcoal); margin-top: var(--margin-xs);">Après l'exécution d'un outil</p>
+        <span class="tag tag--outline" style="--tag-color: var(--color-blue); margin-top: var(--margin-xs);">Feedback possible</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ligne 3 : couleur amber -->
+  <div style="display: flex; align-items: center; gap: var(--gap-md);">
+    <div style="width: 90px; min-width: 90px; border-right: 3px solid var(--color-amber); padding-right: var(--padding-sm); text-align: right;">
+      <span style="font-size: var(--font-size-secondary); font-weight: 700; color: var(--color-amber);">Fin</span>
+    </div>
+    <div style="display: flex; gap: var(--gap-sm); flex: 1;">
+      <div class="card card--compact" style="flex: 1; border-top: 4px solid var(--color-amber);">
+        <p style="font-weight: 700; color: var(--color-charcoal);">Stop</p>
+        <p style="color: var(--color-charcoal); margin-top: var(--margin-xs);">Quand Claude a fini de répondre</p>
+        <span class="tag tag--outline" style="--tag-color: var(--color-amber); margin-top: var(--margin-xs);">Peut forcer continuer</span>
+      </div>
+      <div class="card card--compact" style="flex: 1; border-top: 4px solid var(--color-amber);">
+        <p style="font-weight: 700; color: var(--color-charcoal);">SubagentStop / PreCompact</p>
+        <p style="color: var(--color-charcoal); margin-top: var(--margin-xs);">Fin d'un subagent / avant compaction</p>
+        <span class="tag tag--outline" style="--tag-color: var(--color-amber); margin-top: var(--margin-xs);">Selon l'événement</span>
+      </div>
+    </div>
+  </div>
+
+</div>
