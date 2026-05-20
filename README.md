@@ -24,16 +24,6 @@ En 2 heures, vous apprendrez à configurer des **hooks** pour automatiser votre 
 
 ---
 
-## Speakers
-
-| | Nom | Entreprise |
-|---|---|---|
-| <img src="assets/ALHOSSRI_Laurent_SFEIR.png" width="60" style="border-radius:50%"> | **Laurent ALHOSSRI** | SFEIR |
-| <img src="assets/PHU_Valentin_SFEIR.png" width="60" style="border-radius:50%"> | **Valentin PHU** | SFEIR |
-| <img src="assets/RODRIGUES_Transley_SFEIR.png" width="60" style="border-radius:50%"> | **Transley RODRIGUES** | SFEIR |
-
----
-
 ## Programme
 
 1. **Introduction** — 15 min
