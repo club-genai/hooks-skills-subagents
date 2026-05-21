@@ -119,14 +119,6 @@ body, .reveal {
   color: var(--color-terracotta);
 }
 
-.reveal a:active {
-  color: var(--color-terracotta);
-}
-
-.reveal a:visited {
-  color: var(--color-terracotta-dark);
-}
-
 .reveal p, .reveal li {
    line-height: 1.5;
    font-weight: 400;
