@@ -2,7 +2,7 @@
 
 > Workshop pratique pour étendre et optimiser Claude Code
 
-**Slides** : [club-genai.github.io/hooks-skills-subagents](https://club-genai.github.io/hooks-skills-subagents)
+**Slides** : [clubgenai.github.io/workshop-hooks-skills-subagents](https://clubgenai.github.io/workshop-hooks-skills-subagents)
 
 ---
 
